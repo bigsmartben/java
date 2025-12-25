@@ -29,12 +29,12 @@ puml-parent/
 
 #### WebDB (MySQL)
 - **Bean 名称**: `webDataSource`, `webSqlSessionFactory`, `webTransactionManager`
-- **Mapper 扫描路径**: `com.bsmartben.puml.web..mapper`
+- **Mapper 扫描路径**: `com.bsmartben.puml.web.mapper`
 - **配置前缀**: `app.datasource.web.*`
 
 #### ServiceDB (PostgreSQL)
 - **Bean 名称**: `serviceDataSource`, `serviceSqlSessionFactory`, `serviceTransactionManager`
-- **Mapper 扫描路径**: `com.bsmartben.puml.service..mapper`
+- **Mapper 扫描路径**: `com.bsmartben.puml.service.*.mapper`
 - **配置前缀**: `app.datasource.service.*`
 
 ### 2. MyBatis Mapper 隔离
@@ -44,13 +44,13 @@ puml-parent/
 ```java
 // WebDB Configuration
 @MapperScan(
-    basePackages = "com.bsmartben.puml.web..mapper",
+    basePackages = {"com.bsmartben.puml.web.mapper"},
     sqlSessionFactoryRef = "webSqlSessionFactory"
 )
 
 // ServiceDB Configuration
 @MapperScan(
-    basePackages = "com.bsmartben.puml.service..mapper",
+    basePackages = {"com.bsmartben.puml.service.*.mapper"},
     sqlSessionFactoryRef = "serviceSqlSessionFactory"
 )
 ```
@@ -211,7 +211,7 @@ Web 应用入口和统一装配层。包含：
 ### 添加新的 Mapper
 
 #### Web Mapper (MySQL)
-在 `puml-web` 的 `com.bsmartben.puml.web..mapper` 包下创建接口：
+在 `puml-web` 的 `com.bsmartben.puml.web.mapper` 包下创建接口：
 
 ```java
 package com.bsmartben.puml.web.mapper;
@@ -225,7 +225,7 @@ public interface YourWebMapper {
 ```
 
 #### Service Mapper (PostgreSQL)
-在 `puml-service-xxx` 的 `com.bsmartben.puml.service..mapper` 包下创建接口：
+在 `puml-service-xxx` 的 `com.bsmartben.puml.service.xxx.mapper` 包下创建接口：
 
 ```java
 package com.bsmartben.puml.service.xxx.mapper;
