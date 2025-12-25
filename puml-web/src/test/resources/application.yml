@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: puml-web-test
+
+# Test configuration using H2 in-memory databases
+app:
+  datasource:
+    web:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:puml_web_test;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password: 
+      hikari:
+        pool-name: WebDB-Test-HikariPool
+        minimum-idle: 1
+        maximum-pool-size: 5
+
+    service:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:puml_service_test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password: 
+      hikari:
+        pool-name: ServiceDB-Test-HikariPool
+        minimum-idle: 1
+        maximum-pool-size: 5
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.bsmartben.puml: INFO
+    org.mybatis: DEBUG

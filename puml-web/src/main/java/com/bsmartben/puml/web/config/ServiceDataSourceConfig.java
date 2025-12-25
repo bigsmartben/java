@@ -16,11 +16,11 @@ import javax.sql.DataSource;
 
 /**
  * ServiceDB DataSource Configuration (PostgreSQL)
- * Scans service layer mappers: com.bsmartben.puml.service..mapper
+ * Scans service layer mappers: com.bsmartben.puml.service.*.mapper
  */
 @Configuration
 @MapperScan(
-    basePackages = "com.bsmartben.puml.service..mapper",
+    basePackages = {"com.bsmartben.puml.service.*.mapper"},
     sqlSessionFactoryRef = "serviceSqlSessionFactory"
 )
 public class ServiceDataSourceConfig {

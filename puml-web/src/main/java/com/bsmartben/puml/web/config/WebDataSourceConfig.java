@@ -16,11 +16,11 @@ import javax.sql.DataSource;
 
 /**
  * WebDB DataSource Configuration (MySQL)
- * Scans web layer mappers: com.bsmartben.puml.web..mapper
+ * Scans web layer mappers: com.bsmartben.puml.web.mapper
  */
 @Configuration
 @MapperScan(
-    basePackages = "com.bsmartben.puml.web..mapper",
+    basePackages = {"com.bsmartben.puml.web.mapper"},
     sqlSessionFactoryRef = "webSqlSessionFactory"
 )
 public class WebDataSourceConfig {
